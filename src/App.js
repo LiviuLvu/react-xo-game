@@ -18,15 +18,19 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+      <div className="app">
+        <header className="app-header">
+          <div>
+            <img src={logo} className="app-logo" alt="logo" />
+          </div>
+          <button
+            type="button" 
+            className={this.state.game ? 'btn btn-primary' : 'hidden'}
+            onClick={this.handleGameStart}>Start Game</button>
         </header>
-        <button 
-          type="button" 
-          className={this.state.game ? 'btn btn-primary' : 'hidden'}
-          onClick={this.handleGameStart}>Start Game</button>
-        <Game game={this.state.game}/>
+        <div className="game-container">
+          <Game game={this.state.game}/>
+        </div>
       </div>
     );
   }
