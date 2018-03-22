@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import GameGrid from './GameGrid';
+import GameHistory from './GameHistory';
 
 class App extends Component {
   constructor(props) {
@@ -32,15 +33,17 @@ class App extends Component {
     });
   }
   handleClickSquare(i) {
-    const history = this.state.history;
-    const current = history[history.length - 1];
+    const historyCopy = this.state.history.slice();
+    const current = historyCopy[historyCopy.length - 1];
     const squares = current.squares.slice();
     if(this.calculateWinner(squares) || squares[i].val) {
       return;
     }
     squares[i].val = this.state.xIsNext ? 'x' : 'o';
     this.setState({
-      gameSquares: squares,
+      history: historyCopy.concat([
+        {squares: squares}
+      ]),
       xIsNext: !this.state.xIsNext
     });
   }
@@ -59,18 +62,16 @@ class App extends Component {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (squares[a].val && squares[a].val === squares[b].val && squares[a].val === squares[c].val) {
-        console.error('1');
         return 'Winner is: ' + squares[a].val;
       }
       if (!squares.some((item)=>item.val === '')) {
-        console.error('2');
         return 'Game ended in draw';
       }
     }
     return null;
   }
   render() {
-    const history = this.state.history;
+    const history = this.state.history.slice();
     const current = history[history.length - 1];
     const gameState = this.calculateWinner(current.squares);
     let status;
@@ -113,6 +114,7 @@ class App extends Component {
               onClick={(i) => this.handleClickSquare(i)}
               show={this.state.onStart}
               className={this.state.onStart} />
+            <GameHistory allHistory={history} />
           </div>
 
         </div>
