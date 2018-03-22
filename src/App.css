@@ -19,8 +19,11 @@
   font-size: large; }
 
 .game-container {
-  width: 300px;
-  margin: auto; }
+  max-width: 300px;
+  margin: auto;
+  margin-bottom: 10px; }
+  .game-container :last-child > ul {
+    margin-top: 30px; }
 
 @keyframes app-logo-spin {
   from {
