@@ -26,7 +26,9 @@ class App extends Component {
           <button
             type="button" 
             className={this.state.game ? 'btn btn-info' : 'hidden'}
-            onClick={this.handleGameStart}>Start Game</button>
+            onClick={this.handleGameStart}>
+            Start Game
+          </button>
         </header>
         
         <div className="game-container">
