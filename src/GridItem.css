@@ -1,3 +1,17 @@
 input {
+  -webkit-appearance: none;
+  float: left;
   width: 100px;
-  height: 100px; }
+  height: 100px;
+  text-align: center;
+  font-size: 73px;
+  font-family: fantasy;
+  color: #60dafc;
+  border: none;
+  color: transparent;
+  background-color: unset;
+  text-shadow: 0 0 0 #60dafc;
+  text-align: center;
+  border: 1px solid #60dafc; }
+  input:focus {
+    outline: none; }

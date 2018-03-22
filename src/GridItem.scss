@@ -1,4 +1,20 @@
+$color:#60dafc;
 input {
+  -webkit-appearance: none;
+  float:left;
   width: 100px;
   height: 100px;
+  text-align: center;
+  font-size: 73px;
+  font-family: fantasy;
+  color: $color;
+  border: none;
+  color: transparent;
+  background-color: unset;
+  text-shadow: 0 0 0 $color;
+  text-align: center;
+  border: 1px solid $color;
+  &:focus {
+      outline: none;
+  }
 }

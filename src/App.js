@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Game from './Game';
+import GameGrid from './GameGrid';
 
 class App extends Component {
   constructor(props) {
@@ -25,11 +25,12 @@ class App extends Component {
           </div>
           <button
             type="button" 
-            className={this.state.game ? 'btn btn-primary' : 'hidden'}
+            className={this.state.game ? 'btn btn-info' : 'hidden'}
             onClick={this.handleGameStart}>Start Game</button>
         </header>
+        
         <div className="game-container">
-          <Game game={this.state.game}/>
+          <GameGrid game={this.state.game}/>
         </div>
       </div>
     );
