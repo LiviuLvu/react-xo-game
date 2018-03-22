@@ -6,14 +6,25 @@ import GameGrid from './GameGrid';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.handleGameStart = this.handleGameStart.bind(this);    
+    this.handleStart = this.handleStart.bind(this);    
     this.state = {
-      game: 'hidden'
+      onStart: 'hidden',
+      history: [
+        {id:0, val:''},
+        {id:1, val:''},
+        {id:2, val:''},
+        {id:3, val:''},
+        {id:4, val:''},
+        {id:5, val:''},
+        {id:6, val:''},
+        {id:7, val:''},
+        {id:8, val:''}
+      ]
     }
   }
-  handleGameStart() {
+  handleStart() {
     this.setState({
-      game: ''
+      onStart: ''
     });
   }
   render() {
@@ -25,14 +36,16 @@ class App extends Component {
           </div>
           <button
             type="button" 
-            className={this.state.game ? 'btn btn-info' : 'hidden'}
-            onClick={this.handleGameStart}>
+            className={this.state.onStart ? 'btn btn-info' : 'hidden'}
+            onClick={this.handleStart}>
             Start Game
           </button>
         </header>
         
         <div className="game-container">
-          <GameGrid game={this.state.game}/>
+          <GameGrid 
+            board={this.state.history}
+            hide={this.state.onStart}/>
         </div>
       </div>
     );

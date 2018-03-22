@@ -5,17 +5,7 @@ class GameGrid extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameSquares: [
-        {id:0, val:''},
-        {id:1, val:''},
-        {id:2, val:''},
-        {id:3, val:''},
-        {id:4, val:''},
-        {id:5, val:''},
-        {id:6, val:''},
-        {id:7, val:''},
-        {id:8, val:''}
-      ],
+      gameSquares: this.props.board,
       xIsNext: true
     };
   }
@@ -63,7 +53,7 @@ class GameGrid extends Component {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
     
-    return <div className={this.props.game}>
+    return <div className={this.props.hide}>
         <nav className="navbar navbar-inverse">
           <div className="container-fluid">
             <div className="navbar-header">
