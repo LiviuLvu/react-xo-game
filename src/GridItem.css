@@ -12,6 +12,7 @@ input {
   background-color: unset;
   text-shadow: 0 0 0 #60dafc;
   text-align: center;
-  border: 1px solid #60dafc; }
+  border: 1px solid #60dafc;
+  cursor: pointer; }
   input:focus {
     outline: none; }

@@ -6,35 +6,43 @@ class GameGrid extends Component {
     super(props);
     this.state = {
       gameSquares: [
-        {id:0, val:null},
-        {id:1, val:null},
-        {id:2, val:null},
-        {id:3, val:null},
-        {id:4, val:null},
-        {id:5, val:null},
-        {id:6, val:null},
-        {id:7, val:null},
-        {id:8, val:null}
+        {id:0, val:''},
+        {id:1, val:''},
+        {id:2, val:''},
+        {id:3, val:''},
+        {id:4, val:''},
+        {id:5, val:''},
+        {id:6, val:''},
+        {id:7, val:''},
+        {id:8, val:''}
       ],
+      xIsNext: true,
       winState: false
     };
   }
   updateSquare(i) {
     const squares = this.state.gameSquares.slice();
-    squares[i].val = 'x';
-    this.setState({ gameSquares: squares });
+    squares[i].val = this.state.xIsNext ? 'x' : 'o';
+    this.setState({
+      gameSquares: squares,
+      xIsNext: !this.state.xIsNext
+    });
   }
   render() {
     return(
       <div className={this.props.game}>
-          {this.state.gameSquares.map((item, index)=>{
-            return(
-              <GridItem 
-                id={item.id} 
-                val={this.state.gameSquares[index].val} 
-                onClick={()=>this.updateSquare(index)} />
-            );
-          })}
+        <br/>
+        <div>
+            {this.state.gameSquares.map((item, index)=>{
+              return(
+                <GridItem 
+                  key={item.id} 
+                  val={this.state.gameSquares[index].val} 
+                  onClick={()=>this.updateSquare(index)} />
+              );
+            })}
+        </div>
+        <div className="label label-info">{'Next player: ' + (this.state.xIsNext ? 'X' : 'O')}</div>
       </div>
     )
   }
