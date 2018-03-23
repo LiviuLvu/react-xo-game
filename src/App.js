@@ -13,15 +13,15 @@ class App extends Component {
       stepNumber: 0,
       history: [
         {squares: [
-          {id:0, val:''},
-          {id:1, val:''},
-          {id:2, val:''},
-          {id:3, val:''},
-          {id:4, val:''},
-          {id:5, val:''},
-          {id:6, val:''},
-          {id:7, val:''},
-          {id:8, val:''}
+          {id:0, winSpot:'', val:''},
+          {id:1, winSpot:'', val:''},
+          {id:2, winSpot:'', val:''},
+          {id:3, winSpot:'', val:''},
+          {id:4, winSpot:'', val:''},
+          {id:5, winSpot:'', val:''},
+          {id:6, winSpot:'', val:''},
+          {id:7, winSpot:'', val:''},
+          {id:8, winSpot:'', val:''}
         ]}
       ]
     }
@@ -65,6 +65,7 @@ class App extends Component {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (squares[a].val && squares[a].val === squares[b].val && squares[a].val === squares[c].val) {
+        this.highlight(a,b,c);
         return 'Winner is: ' + squares[a].val;
       }
       if (!squares.some((item)=>item.val === '')) {
@@ -73,20 +74,25 @@ class App extends Component {
     }
     return null;
   }
+  highlight(a, b, c) {
+    const historyCopy = this.state.history.slice(0, this.state.stepNumber + 1);
+    const current = historyCopy[historyCopy.length - 1];
+    const squares = current.squares.slice();
+    squares[a].winSpot = 1;
+    squares[b].winSpot = 1;
+    squares[c].winSpot = 1;
+  }
   handleJumpTo(step) {
     this.setState({
       stepNumber: step,
       xIsNext: (step % 2) === 0
     });
-    console.log('1-->', this.state);
   }
   render() {
     let history = this.state.history;
     let current = history[this.state.stepNumber];
     let gameState = this.calculateWinner(current.squares);
     let status;
-    console.log('this.state.stepNumber-->', this.state.stepNumber);
-    console.log('current item -->', current);
 
     if(gameState) {
       status = gameState;
@@ -124,7 +130,6 @@ class App extends Component {
             <GameGrid 
               gameSquares={current.squares}
               onClick={i => this.handleClickSquare(i)}
-              show={this.state.onStart}
               className={this.state.onStart} />
             <GameHistory
               onJumpTo={step => this.handleJumpTo(step)}

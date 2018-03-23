@@ -5,11 +5,12 @@ function GameGrid(props) {
   return(
     <div>
       {props.gameSquares.map((squares, index) => {
-        console.log('squares', squares);
+        let winHighlight = squares.winSpot ? 'winHighlight' : '';
         return (
           <GridItem 
             key={squares.id} 
             val={squares.val} 
+            win={winHighlight}
             onClick={() => props.onClick(index)} />
         );
       })}

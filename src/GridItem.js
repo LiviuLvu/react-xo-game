@@ -8,6 +8,7 @@ function GridItem(props) {
       id={props.id}
       value={props.val}
       onClick={props.onClick}
+      className={props.win}
     />
   )
 }
