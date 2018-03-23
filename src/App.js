@@ -34,7 +34,8 @@ class App extends Component {
     });
   }
   handleClickSquare(i) {
-    const historyCopy = this.state.history.slice(0, this.state.stepNumber + 1);
+    const historyDeepCopy = JSON.stringify(this.state.history.slice(0, this.state.stepNumber + 1));
+    const historyCopy = JSON.parse(historyDeepCopy);
     const current = historyCopy[historyCopy.length - 1];
     const squares = current.squares.slice();
     if(this.calculateWinner(squares) || squares[i].val) {
