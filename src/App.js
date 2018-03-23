@@ -35,7 +35,7 @@ class App extends Component {
     const historyDeepCopy = JSON.stringify(this.state.history.slice(0, this.state.stepNumber + 1));
     const historyCopy = JSON.parse(historyDeepCopy);
     const current = historyCopy[historyCopy.length - 1];
-    const squares = current.squares.slice();
+    const squares = JSON.parse(JSON.stringify(current.squares));
     if(this.calculateWinner(squares) || squares[i].val) {
       return;
     }
