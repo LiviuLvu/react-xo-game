@@ -1,4 +1,4 @@
-input {
+input[type=text] {
   width: 100px;
   height: 100px;
   text-align: center;
@@ -12,5 +12,5 @@ input {
   text-align: center;
   border: 1px solid #60dafc;
   cursor: pointer; }
-  input:focus {
+  input[type=text]:focus {
     outline: none; }
