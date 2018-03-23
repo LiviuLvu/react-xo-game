@@ -83,10 +83,15 @@ class App extends Component {
     squares[c].winSpot = 1;
   }
   handleJumpTo(step) {
+    var elements = document.getElementsByClassName('list-group-item');
+    Array.prototype.forEach.call(elements, element => element.style.color='#333');
+
     this.setState({
       stepNumber: step,
       xIsNext: (step % 2) === 0
     });
+    
+    document.getElementById('history' + this.state.stepNumber).style.color = '#60dafc';
   }
   render() {
     let history = this.state.history;

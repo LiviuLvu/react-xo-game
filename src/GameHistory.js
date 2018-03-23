@@ -8,6 +8,7 @@ function GameHistory(props) {
         return(
           <li
             key={move}
+            id={'history' + move}
             onClick={()=>props.onJumpTo(move)}
             className="list-group-item">
             {desc}
