@@ -25,10 +25,8 @@ class App extends Component {
         ]}
       ]
     }
-    this.handleStart = this.handleStart.bind(this);
-    this.calculateWinner = this.calculateWinner.bind(this);
   }
-  handleStart() {
+  handleStart = () => {
     this.setState({
       onStart: ''
     });
@@ -56,7 +54,7 @@ class App extends Component {
     var elements = document.getElementsByClassName('list-group-item');
     Array.prototype.forEach.call(elements, element => element.style.color = '#333');
   }
-  calculateWinner(squares) {
+  calculateWinner = (squares) => {
     const lines = [
       [0, 1, 2],
       [3, 4, 5],
