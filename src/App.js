@@ -72,9 +72,9 @@ class App extends Component {
         this.highlight(a,b,c);
         return 'Winner is: ' + squares[a].val;
       }
-      if (!squares.some((item)=>item.val === '')) {
-        return 'Game ended in draw';
-      }
+    }
+    if (!squares.some((item)=>item.val === '')) {
+      return 'Game ended in draw';
     }
     return null;
   }
