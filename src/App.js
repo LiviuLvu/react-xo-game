@@ -48,11 +48,6 @@ class App extends Component {
       xIsNext: !this.state.xIsNext,
       stepNumber: historyCopy.length
     });
-    this.clearHistoryStyle();
-  }
-  clearHistoryStyle() {
-    var elements = document.getElementsByClassName('list-group-item');
-    Array.prototype.forEach.call(elements, element => element.style.color = '#333');
   }
   calculateWinner = (squares) => {
     const lines = [
@@ -87,9 +82,6 @@ class App extends Component {
     squares[c].winSpot = 1;
   }
   handleJumpTo(step) {
-    this.clearHistoryStyle();
-    document.getElementById('history' + step).style.color = '#60dafc';
-
     this.setState({
       stepNumber: step,
       xIsNext: (step % 2) === 0
@@ -139,9 +131,10 @@ class App extends Component {
               onClick={i => this.handleClickSquare(i)}
               className={this.state.onStart} />
             <GameHistory
+              styleStep={this.state.stepNumber}
               onJumpTo={step => this.handleJumpTo(step)}
               historyList={history} />
-
+              
           </div>
         </div>
       </div>
